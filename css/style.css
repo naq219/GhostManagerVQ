@@ -1,0 +1,243 @@
+/* Biến màu chủ đạo - tông màu chùa */
+:root {
+    --primary-color: #8B4513; /* Nâu */
+    --secondary-color: #F5DEB3; /* Vàng nhạt */
+    --accent-color: #D2B48C; /* Nâu nhạt */
+    --text-color: #333;
+    --light-color: #FFF;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Reset và cài đặt cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: #f9f5f0;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header */
+header {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: var(--light-color);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.3s;
+}
+
+nav ul li a:hover, nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Main content */
+main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 150px);
+}
+
+/* Search box */
+.search-container {
+    margin: 1rem 0 2rem;
+}
+
+.search-box {
+    display: flex;
+    border: 2px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.search-box input {
+    flex: 1;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+
+.search-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #6b3410;
+}
+
+/* Search results */
+.search-results h2 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.result-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.card {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+/* Detail page */
+.detail-page {
+    padding: 1rem 0;
+}
+
+.back-button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.detail-card {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.detail-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.detail-info p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Contact page */
+.contact-page h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.contact-info {
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.contact-item i {
+    color: var(--primary-color);
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+/* Welcome message and no results */
+.welcome-message, .no-results {
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--light-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* Responsive design */
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .result-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px) {
+    .result-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
