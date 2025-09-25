@@ -1,6 +1,6 @@
 /* Biến màu chủ đạo - tông màu chùa */
 :root {
-    --primary-color: #8B4513; /* Nâu */
+    --primary-color: #2b65f8; /* Nâu */
     --secondary-color: #F5DEB3; /* Vàng nhạt */
     --accent-color: #D2B48C; /* Nâu nhạt */
     --text-color: #333;
@@ -27,6 +27,7 @@ body {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    
     padding: 0 15px;
 }
 
