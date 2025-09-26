@@ -6,6 +6,8 @@ const app = createApp({
         // Khởi tạo PocketBase
         const pb = new PocketBase('http://103.163.118.103:401');
         
+       
+
         // Trạng thái ứng dụng
         const currentPage = ref('home');
         const searchQuery = ref('');
@@ -38,6 +40,8 @@ const app = createApp({
         const isMobile = () => {
             return false ;
         };
+
+       
         
         // Tải dữ liệu tối thiểu cho tìm kiếm
         const fetchSearchIndex = async (page = 1, retryCount = 0) => {
