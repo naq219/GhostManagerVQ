@@ -4,7 +4,7 @@ const { createApp, ref, reactive, computed, onMounted } = Vue;
 const app = createApp({
     setup() {
         // Khởi tạo PocketBase
-        const pb = new PocketBase('http://103.163.118.103:401');
+        const pb = new PocketBase('https://s1.vq.id.vn/p401');
         
        
 

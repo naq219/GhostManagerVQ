@@ -32,10 +32,14 @@
                 <p style="color: rgb(248, 174, 37);">Thông Tin Hương Linh</p>
                 <nav>
                     <ul>
-                        <li><a href="#" @click.prevent="currentPage = 'home'"
-                                :class="{ active: currentPage === 'home' }">Trang chủ</a></li>
-                        <li><a href="#" @click.prevent="currentPage = 'contact'"
-                                :class="{ active: currentPage === 'contact' }">Liên hệ</a></li>
+                       
+                               
+                                <li><a href="http://dangkyquyy.vq.id.vn/" 
+                                :class="{ active: currentPage === 'home' }">Đăng Ký Quy Y</a></li>
+
+                                  <li><a href="#" @click.prevent="currentPage = 'contact'"
+                                :class="{ active: currentPage === 'contact' }">☎ Liên hệ</a></li>
+                       
                     </ul>
                 </nav>
             </div>
@@ -161,7 +165,7 @@
         const app = createApp({
             setup() {
                 // Khởi tạo PocketBase
-                const pb = new PocketBase('http://103.163.118.103:401');
+                const pb = new PocketBase('https://s1.vq.id.vn/p401');
 
                 const isAppLoading = ref(false);
                 const isPreloaded = ref(false);
