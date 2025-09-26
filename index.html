@@ -163,10 +163,11 @@
                 // Khởi tạo PocketBase
                 const pb = new PocketBase('http://103.163.118.103:401');
 
-                const isAppLoading = ref(true);
-                setTimeout(() => {
-                    isAppLoading.value = false;
-                }, 5000);
+                const isAppLoading = ref(false);
+                const isPreloaded = ref(false);
+                // setTimeout(() => {
+                //     isAppLoading.value = false;
+                // }, 5000);
                 
 
 
@@ -329,6 +330,13 @@
 
                 // Tìm kiếm trong search index
                 const performSearch = async () => {
+
+                    //todo 
+                    if (!isPreloaded.value) {
+                        isAppLoading.value = true;
+                        return;
+                    }
+
                     const query = searchQuery.value.trim();
                     if (!query) {
                         searchResults.value = [];
@@ -415,6 +423,13 @@
                             await loadMoreSearchIndex();
                         }
                         console.log('Đã preload toàn bộ search index');
+                        isPreloaded.value = true;
+                        if(isAppLoading.value)
+                        performSearch();
+
+                        isAppLoading.value = false;
+                        
+                        
                     }
                 };
 
@@ -436,6 +451,7 @@
                     selectedRecord,
                     isLoading,
                     isAppLoading,
+                    isPreloaded,
                     errorMessage,
                     performSearch: debouncedSearch,
                     showDetail,
