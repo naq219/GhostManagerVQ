@@ -49,16 +49,13 @@ header {
 }
 
 header h1 {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 0;
+    font-size: 2rem;   /* giảm size, tránh quá to */
+    color: #FFD700;    /* vàng đậm dễ đọc hơn */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* tăng độ nổi */
 }
 
 header p {
-    text-align: center;
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
-    font-weight: 500;
+    color: #fff8dc; /* vàng nhạt khác tone */
 }
 
 nav ul {
@@ -232,6 +229,48 @@ main {
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 }
+
+
+.toggle-group {
+    margin-top: 10px;
+    display: inline-flex;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.toggle-group {
+    display: inline-flex;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ccc; /* viền mảnh để phân biệt */
+}
+
+.toggle-item {
+    background: #f2f2f2;  /* nền xám nhạt rõ hơn nền app */
+    border: none;
+    color: #333;
+    padding: 10px 18px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.toggle-item:not(:last-child) {
+    border-right: 1px solid #ddd;
+}
+
+.toggle-item:hover {
+    background: #e6e6e6; /* hover sáng hơn */
+}
+
+.toggle-item.active {
+    background: #f8ae25; /* vàng cam nổi bật */
+    color: #fff;         /* chữ trắng nổi bật */
+    font-weight: 600;
+}
+
+
+
 
 /* Footer */
 footer {
