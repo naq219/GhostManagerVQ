@@ -19,14 +19,14 @@ const app = createApp({
         const searchIndex = ref([]); // Chỉ chứa dữ liệu tìm kiếm
         const detailCache = ref(new Map()); // Cache chi tiết record
         const currentPage_data = ref(1);
-        const perPage = ref(100); // Tăng lên vì dữ liệu nhỏ hơn
+        const perPage = ref(500); // Tăng lên vì dữ liệu nhỏ hơn
         const totalPages = ref(0);
         const isDataLoaded = ref(false);
         
         // Cấu hình Fuse.js
         const fuseOptions = {
-            keys: ['hoten_die', 'hoten_owner', 'sdt'],
-            threshold: 0.4,
+            keys: ['hoten_die', 'hoten_owner', 'phone'],
+            threshold: 0.3,
             includeScore: true
         };
         
@@ -52,7 +52,7 @@ const app = createApp({
                 // Chỉ lấy trường cần thiết cho tìm kiếm và hiển thị danh sách
                 const records = await pb.collection('ghostmg').getList(page, perPage.value, {
                     sort: '-created',
-                    fields: 'hoten_die,hoten_owner,sdt', // Chỉ lấy trường cần thiết
+                    fields: 'hoten_die,hoten_owner,phone,id', // Chỉ lấy trường cần thiết
                     signal: controller.signal
                 });
                 
@@ -107,7 +107,7 @@ const app = createApp({
             try {
                 // Lấy đầy đủ thông tin record
                 const record = await pb.collection('ghostmg').getOne(recordId, {
-                    fields: 'id,hoten_die,hoten_owner,sdt,bang,hang,cot,ngay_mat,ngay_nhap_linh,note,created,updated'
+                    fields: 'id,hoten_die,hoten_owner,phone,bang,hang,cot,ngay_mat,ngay_nhap_linh,note,created,updated'
                 });
                 
                 // Lưu vào cache
@@ -181,7 +181,7 @@ const app = createApp({
         const showDetail = async (record) => {
             currentPage.value = 'detail';
             selectedRecord.value = record; // Hiển thị dữ liệu cơ bản trước
-            
+            console.log('showDetail', record);
             // Tải chi tiết đầy đủ trong background
             const fullRecord = await fetchRecordDetail(record.id);
             if (fullRecord) {
@@ -218,7 +218,7 @@ const app = createApp({
         const preloadAllSearchIndex = async () => {
             if (!isMobile() && isDataLoaded.value) {
                 while (currentPage_data.value < totalPages.value) {
-                    await new Promise(resolve => setTimeout(resolve, 300)); // Đợi 1s giữa các request
+                    await new Promise(resolve => setTimeout(resolve, 100)); // Đợi 1s giữa các request
                     await loadMoreSearchIndex();
                 }
                 console.log('Đã preload toàn bộ search index');
@@ -231,7 +231,7 @@ const app = createApp({
             await fetchSearchIndex(1);
             
             // Preload thêm cho desktop
-            setTimeout(preloadAllSearchIndex, 3000);
+            setTimeout(preloadAllSearchIndex, 500);
         });
         
         return {
